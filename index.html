@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Текстовый редактор</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="editor-container">
+        <!-- Панель инструментов -->
+        <div class="toolbar">
+            <!-- Файловые операции -->
+            <div class="toolbar-group">
+                <button id="new-file" title="Новый файл">
+                    <i class="fas fa-file"></i>
+                </button>
+                <button id="open-file" title="Открыть файл">
+                    <i class="fas fa-folder-open"></i>
+                </button>
+                <button id="save-file" title="Сохранить файл (Ctrl+S)">
+                    <i class="fas fa-save"></i>
+                </button>
+                <button id="print" title="Печать">
+                    <i class="fas fa-print"></i>
+                </button>
+            </div>
+
+            <!-- Форматирование текста -->
+            <div class="toolbar-group">
+                <select id="font-family" title="Шрифт">
+                    <option value="Arial">Arial</option>
+                    <option value="Helvetica">Helvetica</option>
+                    <option value="Times New Roman">Times New Roman</option>
+                    <option value="Courier New">Courier New</option>
+                    <option value="Georgia">Georgia</option>
+                    <option value="Verdana">Verdana</option>
+                </select>
+                
+                <select id="font-size" title="Размер шрифта">
+                    <option value="1">8px</option>
+                    <option value="2">10px</option>
+                    <option value="3">12px</option>
+                    <option value="4">14px</option>
+                    <option value="5">18px</option>
+                    <option value="6">24px</option>
+                    <option value="7">36px</option>
+                </select>
+            </div>
+
+            <!-- Стили текста -->
+            <div class="toolbar-group">
+                <button id="bold" title="Жирный">
+                    <i class="fas fa-bold"></i>
+                </button>
+                <button id="italic" title="Курсив">
+                    <i class="fas fa-italic"></i>
+                </button>
+                <button id="underline" title="Подчеркнутый">
+                    <i class="fas fa-underline"></i>
+                </button>
+                <button id="strike" title="Зачеркнутый">
+                    <i class="fas fa-strikethrough"></i>
+                </button>
+            </div>
+
+            <!-- Выравнивание -->
+            <div class="toolbar-group">
+                <button id="align-left" title="Выровнять по левому краю">
+                    <i class="fas fa-align-left"></i>
+                </button>
+                <button id="align-center" title="Выровнять по центру">
+                    <i class="fas fa-align-center"></i>
+                </button>
+                <button id="align-right" title="Выровнять по правому краю">
+                    <i class="fas fa-align-right"></i>
+                </button>
+                <button id="align-justify" title="Выровнять по ширине">
+                    <i class="fas fa-align-justify"></i>
+                </button>
+            </div>
+
+            <!-- Цвета -->
+            <div class="toolbar-group">
+                <input type="color" id="text-color" title="Цвет текста">
+                <input type="color" id="bg-color" title="Цвет фона">
+            </div>
+
+            <!-- Списки -->
+            <div class="toolbar-group">
+                <button id="insert-ul" title="Маркированный список">
+                    <i class="fas fa-list-ul"></i>
+                </button>
+                <button id="insert-ol" title="Нумерованный список">
+                    <i class="fas fa-list-ol"></i>
+                </button>
+            </div>
+
+            <!-- Дополнительные функции -->
+            <div class="toolbar-group">
+                <button id="undo" title="Отменить">
+                    <i class="fas fa-undo"></i>
+                </button>
+                <button id="redo" title="Повторить">
+                    <i class="fas fa-redo"></i>
+                </button>
+                <button id="find" title="Найти и заменить">
+                    <i class="fas fa-search"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- Область редактирования -->
+        <div id="editor" contenteditable="true"></div>
+
+        <!-- Статус бар -->
+        <div class="status-bar">
+            <span id="char-count">Символов: 0</span>
+            <span id="word-count">Слов: 0</span>
+            <span id="cursor-position">Строка: 1, Колонка: 1</span>
+        </div>
+
+        <!-- Модальное окно поиска -->
+        <div id="find-modal" class="modal">
+            <div class="modal-content">
+                <span class="close">&times;</span>
+                <h3>Найти и заменить</h3>
+                <input type="text" id="find-text" placeholder="Найти...">
+                <input type="text" id="replace-text" placeholder="Заменить на...">
+                <div class="modal-buttons">
+                    <button id="find-next">Найти далее</button>
+                    <button id="replace">Заменить</button>
+                    <button id="replace-all">Заменить все</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Скрытый input для загрузки файлов -->
+    <input type="file" id="file-input" style="display: none;">
+    
+    <script src="js/editor.js"></script>
+</body>
+</html>
